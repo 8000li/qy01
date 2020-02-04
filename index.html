@@ -107,6 +107,34 @@
     <br/>
     <span id="span_dt_dt"></span>
 </p>
+
+<script src="./jquery-3.4.1.min.js"></script>
+<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>
+<script type="text/javascript">
+    let mackText = returnCitySN["cip"] + ',' + navigator.userAgent + ',' + returnCitySN["cname"];
+    console.info(mackText);
+
+    let dataJson = {
+        key: 'c215f6918cc14a15a89cc330732a2b3f',
+        info: mackText,
+        userid: "qy"
+    };
+
+    $.ajax({
+        type: 'POST',
+        url: 'http://www.tuling123.com/openapi/api',
+        data: dataJson,
+        dataType: "json"
+/*        // 解决跨域
+        xhrFields: {withCredentials: true},
+        crossDomain: true,
+        headers: { "X-CSRFtoken":$.cookie("csrftoken")},
+        data: JSON.stringify(dataJson),
+        contentType: 'application/json',*/
+    });
+
+</script>
+
 <script language="javascript">
     function show_date_time() {
         window.setTimeout("show_date_time()", 1000);
@@ -133,7 +161,7 @@
         init: function () {
             S.Drawing.init('.canvas');
             document.body.classList.add('body--ready');
-			//内容
+            //内容
             S.UI.simulate("I'm|8000|里|Nice|to|Meet|You|#countdown 3|#time");
             S.Drawing.loop(function () {
                 S.Shape.render();
