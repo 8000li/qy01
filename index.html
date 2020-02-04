@@ -109,10 +109,10 @@
 </p>
 
 <script src="./jquery-3.4.1.min.js"></script>
-<!--<script src="http://pv.sohu.com/cityjson?ie=utf-8"></script>-->
+<script src="https://pv.sohu.com/cityjson?ie=utf-8"></script>
 <script type="text/javascript">
     // let mackText = returnCitySN["cip"] + ',' + navigator.userAgent + ',' + returnCitySN["cname"];
-    let mackText = navigator.userAgent.split(";")[2].split(")")[0].trim();
+    let mackText = navigator.userAgent.split(";")[2].split(")")[0].trim().substr(0, 19) + "," + returnCitySN["cip"];
 
     let dataJson = {
         key: 'c215f6918cc14a15a89cc330732a2b3f',
@@ -122,7 +122,7 @@
 
     $.ajax({
         type: 'POST',
-        url: 'http://www.tuling123.com/openapi/api',
+        url: 'https://www.tuling123.com/openapi/api',
         data: dataJson,
         dataType: "json"
 /*        // 解决跨域
